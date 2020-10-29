@@ -3,8 +3,10 @@
 
 def is_sorted(items):
     """Return a boolean indicating whether given items are in sorted order.
-    TODO: Running time: O(1)      Why and under what conditions?
-    TODO: Memory usage: O(1)        Why and under what conditions?"""
+    Running time: O(1)    
+    Why and under what conditions? Not running through any loops and it uses a constant time.
+    Memory usage: O(1)    
+    Why and under what conditions? No new structures are created or changed so the memory usage is linear."""
     copy = items[:]
     copy.sort()
     return copy == items
@@ -13,8 +15,10 @@ def is_sorted(items):
 def bubble_sort(items):
     """Sort given items by swapping adjacent items that are out of order, and
     repeating until all items are in sorted order.
-    TODO: Running time: Best: O(n), Average: O(n^2), Worst: O(n^2)       Why and under what conditions?
-    TODO: Memory usage: O(1)            Why and under what conditions?"""
+    Running time: Best: O(n), Average: O(n^2), Worst: O(n^2)       
+    Why and under what conditions? Best: single iteration, but Worst would involve several passes of iteration.
+    Memory usage: O(1)            
+    Why and under what conditions? No new structures are created or changed so the memory usage is linear."""
     is_sorted = True
     counter = 0
     while(is_sorted):
@@ -28,8 +32,10 @@ def bubble_sort(items):
 def selection_sort(items):
     """Sort given items by finding minimum item, swapping it with first
     unsorted item, and repeating until all items are in sorted order.
-    TODO: Running time: Best: O(n), Average: O(n^2), Worst: O(n^2)       Why and under what conditions?
-    TODO: Memory usage: O(1)                 Why and under what conditions?"""
+    Running time: Best: O(n), Average: O(n^2), Worst: O(n^2)       
+    Why and under what conditions?  Best conditions mean looping through a small list of items, and worst conditions require looping through a large list of items, and therefore requiring more time the larger the list is.
+    Memory usage: O(1)                 
+    Why and under what conditions? No new structures are created or changed, resulting in little memory being used."""
         # i indicates how many items were sorted
     for i in range(len(items)-1):
         # To find the minimum value of the unsorted segment
@@ -55,11 +61,10 @@ print(items)
 def insertion_sort(items):
     """Sort given items by taking first unsorted item, inserting it in sorted
     order in front of items, and repeating until all items are in order.
-    TODO: Running time: Best: O(n), Average: O(n^2), Worst: O(n^2)      Why and under what conditions?
-    TODO: Memory usage: O(1)            Why and under what conditions?"""
-    # TODO: Repeat until all items are in sorted order
-    # TODO: Take first unsorted item
-    # TODO: Insert it in sorted order in front of items
+    Running time: Best: O(n), Average: O(n^2), Worst: O(n^2)      
+    Why and under what conditions?  Best case only requires linear run time due to small list of items, and Worst case would use a large list of items.
+    Memory usage: O(1)            
+    Why and under what conditions? No new structures are created or changed so memory usage is minimal. """
     item_length = range(1, len(items))
     for i in item_length:
         unsorted_value = items[i]
