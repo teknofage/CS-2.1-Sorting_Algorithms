@@ -3,9 +3,8 @@
 
 def is_sorted(items):
     """Return a boolean indicating whether given items are in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Check that all adjacent items are in order, return early if so
+    TODO: Running time: O(1)      Why and under what conditions?
+    TODO: Memory usage: O(1)        Why and under what conditions?"""
     copy = items[:]
     copy.sort()
     return copy == items
@@ -14,10 +13,8 @@ def is_sorted(items):
 def bubble_sort(items):
     """Sort given items by swapping adjacent items that are out of order, and
     repeating until all items are in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until all items are in sorted order
-    # TODO: Swap adjacent items that are out of order
+    TODO: Running time: Best: O(n), Average: O(n^2), Worst: O(n^2)       Why and under what conditions?
+    TODO: Memory usage: O(1)            Why and under what conditions?"""
     is_sorted = True
     counter = 0
     while(is_sorted):
@@ -31,11 +28,8 @@ def bubble_sort(items):
 def selection_sort(items):
     """Sort given items by finding minimum item, swapping it with first
     unsorted item, and repeating until all items are in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until all items are in sorted order
-    # TODO: Find minimum item in unsorted items
-    # TODO: Swap it with first unsorted item
+    TODO: Running time: Best: O(n), Average: O(n^2), Worst: O(n^2)       Why and under what conditions?
+    TODO: Memory usage: O(1)                 Why and under what conditions?"""
         # i indicates how many items were sorted
     for i in range(len(items)-1):
         # To find the minimum value of the unsorted segment
@@ -61,8 +55,8 @@ print(items)
 def insertion_sort(items):
     """Sort given items by taking first unsorted item, inserting it in sorted
     order in front of items, and repeating until all items are in order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    TODO: Running time: Best: O(n), Average: O(n^2), Worst: O(n^2)      Why and under what conditions?
+    TODO: Memory usage: O(1)            Why and under what conditions?"""
     # TODO: Repeat until all items are in sorted order
     # TODO: Take first unsorted item
     # TODO: Insert it in sorted order in front of items
