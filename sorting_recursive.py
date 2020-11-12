@@ -9,7 +9,7 @@ def merge(items1, items2):
         Why and under what conditions? 
             Because it needs to read both arrays until it reaches the end of one of them.
             This is also when extra space is not allowed.
-    TODO: Memory usage: 
+        Memory usage: 
             O(1) or O(n)
         Why and under what conditions?
             Not creating new structures beyond the merging of the two lists
@@ -42,11 +42,14 @@ def split_sort_merge(items):
 def merge_sort(items):
     """Sort given items by splitting list into two approximately equal halves,
     sorting each recursively, and merging results into a list in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
+        Running time: 
+            (n log(n))
+        Why and under what conditions?
+            Under average conditions
         Memory usage: 
             O(n)
-        TODO: Why and under what conditions?
-            Creating new data structures. 
+        Why and under what conditions?
+            Creating no new data structures. 
         """
     # Check if list is so small it's already sorted (base case)
     if len(items) <= 1:
@@ -90,11 +93,10 @@ def merge_sort(items):
         # iterate j and k
         j += 1
         k += 1
-        
+        # Merge sorted halves into one list in sorted order
     return items
         
 print(merge_sort([6,8,7,1]))
-    # TODO: Merge sorted halves into one list in sorted order
 
 
 def partition(items, low, high):
@@ -103,30 +105,30 @@ def partition(items, low, high):
     and at the end of the higher partition, 
     moving pivot into index `p`, items less than pivot into range
     `[low...p-1]`, and items greater than pivot into range `[p+1...high]`.
-    TODO: Running time: 
-            ??? 
+        Running time: 
+            log(n) 
         Why and under what conditions?
-    TODO: Memory usage: 
+            Only splitting array
+        Memory usage: 
             ??? 
         Why and under what conditions?
         
         """
     # create variable i and set it equal to the index to the left of the low partition
     i = low - 1
-    # TODO: Choose a pivot any way and document your method in docstring above
+    # Choose a pivot any way and document your method in docstring above
     pivot = items[high]
-    # TODO: Loop through all items in range [low...high]
+    # Loop through all items in range [low...high]
     for j in range(low, high):
         if items[j] < pivot:
             i += 1
+            # Move items less than pivot into front of range [low...p-1]
+            # Move items greater than pivot into back of range [p+1...high]
             items[i], items[j] = items[j], items[i]
     items[i + 1], items[high] = items[high], items[i + 1]
+    # Move pivot item into final position [p] and return index p
     return (i + 1)
             
-    # TODO: Move items less than pivot into front of range [low...p-1]
-    # TODO: Move items greater than pivot into back of range [p+1...high]
-    # TODO: Move pivot item into final position [p] and return index p
-
 
 def quick_sort(items, low=None, high=None):
     """Sort given items in place by partitioning items in range `[low...high]`
@@ -151,16 +153,16 @@ def quick_sort(items, low=None, high=None):
             can slow it down a lot.
         Memory usage: 
             Worst: O(log(n))
-        # TODO: Why and under what conditions?
+        Why and under what conditions?
             Uses minimal extra memory by not creating extra data structures. 
         """
-    # TODO: Check if high and low range bounds have default values (not given)
-    # TODO: Check if list or range is so small it's already sorted (base case)
+    # Check if list or range is so small it's already sorted (base case)
     if low >= high:
         # list is sorted
         return
     else:
         pivot = partition(items, low, high)
+        # Check if high and low range bounds have default values (not given)
         if low < pivot and high > pivot:
             low, high == high, low
         return
