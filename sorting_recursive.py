@@ -9,9 +9,22 @@ def merge(items1, items2):
         Why and under what conditions? 
             Because it needs to read both arrays until it reaches the end of one of them.
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until one list is empty
-    # TODO: Find minimum item in both lists and append it to new list
-    # TODO: Append remaining items in non-empty list to new list
+    
+    # TODO: 
+    
+    # TODO: 
+    
+    if items1 and items2:
+    # Find lowest first value between two lists
+        if items1[0] > items2[0]:
+            # if lowest value in second list, swap lists
+            items1, items2 = items2, items1
+        # Find minimum item in both lists and append it to new list
+        # Repeat until one list is empty
+        # Append remaining items in non-empty list to new list
+        return [items1[0]] + merge(items1[1:], items2)
+    return items1 + items2
+# print(merge([5,6,7],[1,2,3]))
 
 
 def split_sort_merge(items):
@@ -29,16 +42,57 @@ def merge_sort(items):
     """Sort given items by splitting list into two approximately equal halves,
     sorting each recursively, and merging results into a list in sorted order.
     TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Check if list is so small it's already sorted (base case)
+        Memory usage: 
+            O(n)
+        TODO: Why and under what conditions?
+            Creating new data structures. 
+        """
+    # Check if list is so small it's already sorted (base case)
     if len(items) <= 1:
         return items
-    # TODO: Split items list into approximately equal halves
+    # Split items list into approximately equal halves
     middle = len(items) // 2
-    left = items[0:middle + 1]
-    right = items[middle + 1]
-    
-    # TODO: Sort each half by recursively calling merge sort
+    # make left section equal to items from start to middle
+    left = items[:middle]
+    # make right section equal to items from middle to end
+    right = items[middle:]
+    # call merge sort on each half
+    merge_sort(left)
+    merge_sort(right)
+    # Sort each half by recursively calling merge sort
+    # declare 3 variable all equal to 0
+    i = j = k = 0
+    # don't go over the length of lists
+    while (i < len(left)) and (j < len(right)):
+        if left[i] < right[j]:
+            # set first variable[k] in items  equal to index [i] of left
+            items[k] = left[i]
+            # iterate i
+            i += 1
+        else:
+            items[k] = right[j]
+            # iterate j
+            j += 1
+        # iterate k
+        k += 1
+    # as long as index i is less than the length of the left sub-array
+    while i < len(left):
+        # set items[k] index as equal to left[i] index
+        items[k] = left[i]
+        # iterate i and k
+        i += 1
+        k+= 1
+    # as long as index j is less than the length of the right sub-array
+    while j < len(right):
+        # set items[k] index as equal to right[j] index
+        items[k] = right[j]
+        # iterate j and k
+        j += 1
+        k += 1
+        
+    return items
+        
+print(merge_sort([6,8,7,1]))
     # TODO: Merge sorted halves into one list in sorted order
 
 
@@ -86,8 +140,17 @@ def quick_sort(items, low=None, high=None):
         """
     # TODO: Check if high and low range bounds have default values (not given)
     # TODO: Check if list or range is so small it's already sorted (base case)
-    if len(items) <= 1:
-        return items
+    if low >= high:
+        # list is sorted
+        return
+    else:
+        partition(items, low, high)
+        p = pivot(partition())
+        if low < pivot and high > pivot:
+            low, high == high, low
+        return
+        
+        # quick_sort()
     # TODO: Partition items in-place around a pivot and get index of pivot
     # TODO: Sort each sublist range by recursively calling quick sort
     
