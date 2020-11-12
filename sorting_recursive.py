@@ -150,7 +150,7 @@ def quick_sort(items, low=None, high=None):
         Why and under what conditions?
             Longer array means more passes and more sorting, meaning more time. 
             Also, choosing a less suitable pivot that does not split the array evenly 
-            can slow it down a lot.
+            can slow it down a lot, such as the smallest or largest element.
         Memory usage: 
             Worst: O(log(n))
         Why and under what conditions?
@@ -165,12 +165,13 @@ def quick_sort(items, low=None, high=None):
         # Check if high and low range bounds have default values (not given)
         if low < pivot and high > pivot:
             low, high = high, low
-        return
+        
         
     # Partition items in-place around a pivot and get index of pivot
     # Sort each sublist range by recursively calling quick sort
         quick_sort(items, low, pivot - 1)
         quick_sort(items, pivot + 1, high)
+        return print(items)
     
 items = [2,3,6,3,7,5,8,9,7,6]    
-quick_sort(items, 0, 9)
+print(quick_sort(items, 0, 9))
