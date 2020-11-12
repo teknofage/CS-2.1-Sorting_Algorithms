@@ -8,12 +8,13 @@ def merge(items1, items2):
             O(n) * m  
         Why and under what conditions? 
             Because it needs to read both arrays until it reaches the end of one of them.
-    TODO: Memory usage: ??? Why and under what conditions?"""
-    
-    # TODO: 
-    
-    # TODO: 
-    
+            This is also when extra space is not allowed.
+    TODO: Memory usage: 
+            O(1) or O(n)
+        Why and under what conditions?
+            Not creating new structures beyond the merging of the two lists
+        """
+    # if both items1 and items2 both exist
     if items1 and items2:
     # Find lowest first value between two lists
         if items1[0] > items2[0]:
@@ -56,10 +57,10 @@ def merge_sort(items):
     left = items[:middle]
     # make right section equal to items from middle to end
     right = items[middle:]
-    # call merge sort on each half
+    # Sort each half by recursively calling merge sort    
     merge_sort(left)
     merge_sort(right)
-    # Sort each half by recursively calling merge sort
+
     # declare 3 variable all equal to 0
     i = j = k = 0
     # don't go over the length of lists
@@ -96,20 +97,32 @@ print(merge_sort([6,8,7,1]))
     # TODO: Merge sorted halves into one list in sorted order
 
 
-def choose_pivot(items):
-    # make pivot equal to first item in array
-    pivot = items[0]
-    return pivot
-
 def partition(items, low, high):
     """Return index `p` after in-place partitioning given items in range
-    `[low...high]` by choosing a pivot (TODO: document your method here) from
-    that range, moving pivot into index `p`, items less than pivot into range
+    `[low...high]` by choosing a pivot from the end of the array, 
+    and at the end of the higher partition, 
+    moving pivot into index `p`, items less than pivot into range
     `[low...p-1]`, and items greater than pivot into range `[p+1...high]`.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    TODO: Running time: 
+            ??? 
+        Why and under what conditions?
+    TODO: Memory usage: 
+            ??? 
+        Why and under what conditions?
+        
+        """
+    # create variable i and set it equal to the index to the left of the low partition
+    i = low - 1
     # TODO: Choose a pivot any way and document your method in docstring above
+    pivot = items[high]
     # TODO: Loop through all items in range [low...high]
+    for j in range(low, high):
+        if items[j] < pivot:
+            i += 1
+            items[i], items[j] = items[j], items[i]
+    items[i + 1], items[high] = items[high], items[i + 1]
+    return (i + 1)
+            
     # TODO: Move items less than pivot into front of range [low...p-1]
     # TODO: Move items greater than pivot into back of range [p+1...high]
     # TODO: Move pivot item into final position [p] and return index p
@@ -121,8 +134,10 @@ def quick_sort(items, low=None, high=None):
         Best case running time: 
             O(n log(n))
         Why and under what conditions?
-            Multiple passes are required, and the a short array means less passes and less sorting. 
-            Also, choosing the appropriate pivot can speed things up a lot.
+            Multiple passes are required, and the a short array means less passes, 
+            and less sorting. 
+            Also, choosing the appropriate pivot that splits the array evenly 
+            can speed things up a lot.
         Average case running time: 
             O(n log(n))
         Why and under what conditions?
@@ -132,7 +147,8 @@ def quick_sort(items, low=None, high=None):
             O(n^2)
         Why and under what conditions?
             Longer array means more passes and more sorting, meaning more time. 
-            Also, choosing a less suitable pivot can slow it down a lot.
+            Also, choosing a less suitable pivot that does not split the array evenly 
+            can slow it down a lot.
         Memory usage: 
             Worst: O(log(n))
         # TODO: Why and under what conditions?
@@ -144,16 +160,15 @@ def quick_sort(items, low=None, high=None):
         # list is sorted
         return
     else:
-        partition(items, low, high)
-        p = pivot(partition())
+        pivot = partition(items, low, high)
         if low < pivot and high > pivot:
             low, high == high, low
         return
         
-        # quick_sort()
-    # TODO: Partition items in-place around a pivot and get index of pivot
-    # TODO: Sort each sublist range by recursively calling quick sort
-    
+    # Partition items in-place around a pivot and get index of pivot
+    # Sort each sublist range by recursively calling quick sort
+        quick_sort(items, low, pivot - 1)
+        quick_sort(items, pivot + 1, high)
     
 items = [2,3,6,3,7,5,8,9,7,6]    
 quick_sort(items, 0, 9)
