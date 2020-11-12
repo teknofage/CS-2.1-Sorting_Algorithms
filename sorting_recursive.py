@@ -14,7 +14,7 @@ def merge(items1, items2):
         Why and under what conditions?
             Not creating new structures beyond the merging of the two lists
         """
-    # if both items1 and items2 both exist
+    # if both items1 and items2 exist
     if items1 and items2:
     # Find lowest first value between two lists
         if items1[0] > items2[0]:
@@ -164,7 +164,7 @@ def quick_sort(items, low=None, high=None):
         pivot = partition(items, low, high)
         # Check if high and low range bounds have default values (not given)
         if low < pivot and high > pivot:
-            low, high == high, low
+            low, high = high, low
         return
         
     # Partition items in-place around a pivot and get index of pivot
