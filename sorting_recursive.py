@@ -60,7 +60,7 @@ def merge_sort(items):
     left = items[:middle]
     # make right section equal to items from middle to end
     right = items[middle:]
-    # Sort each half by recursively calling merge sort    
+    # Sort each half by recursively calling merge sort on each   
     merge_sort(left)
     merge_sort(right)
 
@@ -69,7 +69,7 @@ def merge_sort(items):
     # don't go over the length of lists
     while (i < len(left)) and (j < len(right)):
         if left[i] < right[j]:
-            # set first variable[k] in items  equal to index [i] of left
+            # set first variable[k] in items equal to index [i] of left
             items[k] = left[i]
             # iterate i
             i += 1
