@@ -163,15 +163,43 @@ def quick_sort(items, low=None, high=None):
     else:
         pivot = partition(items, low, high)
         # Check if high and low range bounds have default values (not given)
-        if low < pivot and high > pivot:
-            low, high = high, low
+ 
         
         
     # Partition items in-place around a pivot and get index of pivot
     # Sort each sublist range by recursively calling quick sort
-        quick_sort(items, low, pivot - 1)
-        quick_sort(items, pivot + 1, high)
-        return print(items)
+ 
     
+    
+
+
+def quick_sort(items, low=None, high=None):
+    length = len(items)
+    # Check if list or range is so small it's already sorted (base case)
+    if length <= 1:
+        # return list: it is already sorted
+        return items
+    else:
+        # create pivot by using the last item in the array and removing it from the array
+        pivot = items.pop()
+
+    # items lower than the pivot
+    low = []
+    # items higher than the pivot
+    high = []
+    
+    # iterate through items
+    for item in items:
+        # if the item is greater than the pivot
+        if item > pivot:
+            # append it to the array of items higher than the pivot
+            high.append(item)
+        else:
+            # or else append it to the array of items lower than the pivot
+            low.append(item)
+    # call quick_sort recursively on the lower half, and the higher half, and 
+    # put the pivot in the middle, and return the result
+    return quick_sort(low) + [pivot] + quick_sort(high)
+
 items = [2,3,6,3,7,5,8,9,7,6]    
 print(quick_sort(items, 0, 9))
