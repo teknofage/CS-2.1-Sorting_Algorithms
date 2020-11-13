@@ -156,24 +156,6 @@ def quick_sort(items, low=None, high=None):
         Why and under what conditions?
             Uses minimal extra memory by not creating extra data structures. 
         """
-    # Check if list or range is so small it's already sorted (base case)
-    if low >= high:
-        # list is sorted
-        return
-    else:
-        pivot = partition(items, low, high)
-        # Check if high and low range bounds have default values (not given)
- 
-        
-        
-    # Partition items in-place around a pivot and get index of pivot
-    # Sort each sublist range by recursively calling quick sort
- 
-    
-    
-
-
-def quick_sort(items, low=None, high=None):
     length = len(items)
     # Check if list or range is so small it's already sorted (base case)
     if length <= 1:
