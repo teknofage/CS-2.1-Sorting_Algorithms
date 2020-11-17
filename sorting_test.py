@@ -3,6 +3,8 @@
 from sorting import random_ints
 from sorting_iterative import is_sorted, bubble_sort, selection_sort, insertion_sort
 from sorting_recursive import merge_sort, quick_sort, merge, partition
+from sorting_integer import bucket_sort, counting_sort
+
 
 sort = merge_sort
 
