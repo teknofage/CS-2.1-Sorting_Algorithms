@@ -1,6 +1,5 @@
 #!python
 
-
 def counting_sort(numbers):
     """Sort given numbers (integers) by counting occurrences of each number,
     then looping over counts and copying that many numbers into output list.
@@ -12,7 +11,7 @@ def counting_sort(numbers):
     TODO:   Memory usage: 
                 O(k)
             Why and under what conditions?
-                Under the worst conditions, 
+                Under the worst conditions, because it only creates one extra ddata structure
             """
     # TODO: Find range of given numbers (minimum and maximum integer values)
     # TODO: Create list of counts with a slot for each number in input range
@@ -33,7 +32,7 @@ def counting_sort(numbers):
   
     # for each character, use ord to return the unicode code of the character
     for i in numbers: 
-        # increment the ord index count
+        # increment the ord index count 
         count[ord(i)] += 1
   
     # Change count[i] so that count[i] now contains actual 
@@ -43,7 +42,9 @@ def counting_sort(numbers):
         
     # for each character, use ord to return the  
     # Build the output character array 
-    for i in range(len(numbers)): 
+    for i in range(len(numbers)):
+        # Create list of counts with a slot for each number in input range
+        # Loop over counts and append that many numbers into output list
         output[count[ord(numbers[i])]-1] = numbers[i] 
         count[ord(numbers[i])] -= 1
   
