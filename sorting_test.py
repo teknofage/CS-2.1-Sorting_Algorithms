@@ -6,7 +6,7 @@ from sorting_recursive import merge_sort, quick_sort, merge, partition
 from sorting_integer import bucket_sort, counting_sort
 
 
-sort = merge_sort
+sort = counting_sort
 
 def test_is_sorted_on_sorted_integers():
     # Positive test cases (examples) with lists of sorted integers

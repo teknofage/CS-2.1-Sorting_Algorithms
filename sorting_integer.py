@@ -7,7 +7,8 @@ def counting_sort(numbers):
     TODO:   Running time: 
                 O(n+k)
             Why and under what conditions?
-                It is always linear because ...
+                It is always linear but, its complexity will be equal to how many 
+                times the body of inner cycle is executed.
     TODO:   Memory usage: 
                 O(k)
             Why and under what conditions?
@@ -17,7 +18,46 @@ def counting_sort(numbers):
     # TODO: Create list of counts with a slot for each number in input range
     # TODO: Loop over given numbers and increment each number's count
     # TODO: Loop over counts and append that many numbers into output list
-    # FIXME: Improve this to mutate input instead of creating new output list
+    # FIXME: Improve this to mutate input instead of creating new output list 
+  
+    # Create output variable and set it to equal character array that will have sorted arr 
+    output = [0 for i in range(len(numbers))] 
+  
+    # Create a count array to store count of individual characters and initialize 
+    # count array as 0 
+    count = [0 for i in range(256)] 
+  
+    # ans variable for storing the resulting answer since the  
+    # string is immutable 
+    ans = ["" for _ in numbers] 
+  
+    # for each character, use ord to return the unicode code of the character
+    for i in numbers: 
+        # increment the ord index count
+        count[ord(i)] += 1
+  
+    # Change count[i] so that count[i] now contains actual 
+    # position of this character in output array 
+    for i in range(256): 
+        count[i] += count[i-1] 
+        
+    # for each character, use ord to return the  
+    # Build the output character array 
+    for i in range(len(numbers)): 
+        output[count[ord(numbers[i])]-1] = numbers[i] 
+        count[ord(numbers[i])] -= 1
+  
+    # Traverse the length of numbers array. Copy the output array to numbers, 
+    # so that arr now contains sorted characters 
+    for i in range(len(numbers)): 
+        ans[i] = output[i] 
+    return ans  
+  
+# Input to test counting_sort function 
+# numbers = "canyourearrangeme"
+numbers = "76564231469234"
+ans = counting_sort(numbers) 
+print("Sorted character array is % s" %("".join(ans))) 
 
 
 def bucket_sort(numbers, num_buckets=10):
