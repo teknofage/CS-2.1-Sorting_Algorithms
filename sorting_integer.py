@@ -11,7 +11,7 @@ def counting_sort(numbers):
     TODO:   Memory usage: 
                 O(k)
             Why and under what conditions?
-                Under the worst conditions, because it only creates one extra ddata structure
+                Under the worst conditions, because it only creates one extra data structure
             """
     # TODO: Find range of given numbers (minimum and maximum integer values)
     # TODO: Create list of counts with a slot for each number in input range
@@ -19,7 +19,7 @@ def counting_sort(numbers):
     # TODO: Loop over counts and append that many numbers into output list
     # FIXME: Improve this to mutate input instead of creating new output list 
   
-    # Create output variable and set it to equal character array that will have sorted arr 
+    # Create output variable and set it to equal length of numbers array that will be sorted  
     output = [0 for i in range(len(numbers))] 
   
     # Create a count array to store count of individual characters and initialize 
@@ -94,11 +94,13 @@ def bucket_sort(numbers, num_buckets=10):
     # FIXME: Improve this to mutate input instead of creating new output list
     input = [1,5,6,7,8,4,5,76,4]
     output = []
-    
+    # use the equation given to determine which region of the buckets we need to put the index in
     def equation(index):
         len(input) * input(index) / len(input) + 1
-        
+        # loop through input
     for i in input:
+        # if the result of the equation does not equal 0
         if len(output[equation(input[i])]) != 0:
+            # append it to the output
             output[equation(input[i])].append(input[1])
     return print(output)
