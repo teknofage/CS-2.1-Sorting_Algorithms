@@ -103,15 +103,15 @@ class PrefixTree:
         # Create a list of completions in prefix tree
         completions = []
         # if the prefix is an empty string
-        if prefix == ""
+        if prefix == '':
           # return the strings function on the tree
           return self.strings()
         # create node variable and set it equal to that location 
         node = self._find_node(prefix)
         # if the character at location 0 is not empty
-        if node[0].character != "":
+        if node[0].character != '':
           # traverse the tree from node 0 to the prefix, and append it to completions
-          self.traverse(node[0], prefix, completions.append()
+          self.traverse(node[0], prefix, completions.append())
         # return the list of completions
         return completions
 
@@ -127,7 +127,16 @@ class PrefixTree:
         """Traverse this prefix tree with recursive depth-first traversal.
         Start at the given node with the given prefix representing its path in
         this prefix tree and visit each node with the given visit function."""
-        # TODO
+        #if the node is terminal 
+        if node.is_terminal():
+        #call visit
+          visit(prefix)
+        #if the node has children (can be terminal AND have childen) 
+        if len(node.children > 0):
+          #loop through children
+          for child in node.children:
+            #call traverse on the children
+            self._traverse(child, prefix+child.character, visit)
 
 
 def create_prefix_tree(strings):
