@@ -39,15 +39,26 @@ class PrefixTree:
 
     def contains(self, string):
         """Return True if this prefix tree contains the given string."""
-        if string in self:
-          return True
+        # creating node variable and setting it equal to the root node
+        node = self.root
+        # traverse the characters in the string
+        for char in string:
+          # if the node has a child node that is the same as the character
+          if node.has_child(char): 
+            # make a child variable and set it to equal the character of the child node
+            child = node.get_child(char)
+            # increment the node down the tree by making it point to the child
+            node = child
+          else:
+            # if it the node has no more children, return it as the terminal node
+            return node.is_terminal()
+          return node.is_terminal()
 
     def insert(self, string):
         """Insert the given string into this prefix tree."""
         current = self.root
         #"h e l l o"
         for i in range(len(string)):
-          
           print(string[i])
           #if current does not have children:
           if not current.has_child(string[i]):
@@ -56,7 +67,7 @@ class PrefixTree:
             new_node = PrefixTreeNode(string[i])
             #add it as a child of current node
             #if there is a child the child is the letter of the string
-            current.add_child(string[i],new_node)
+            current.add_child(string[i], new_node)
             print("Current", current)
           #current = that child
           current = current.get_child(string[i])
