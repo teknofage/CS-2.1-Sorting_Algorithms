@@ -86,14 +86,34 @@ class PrefixTree:
             return self.root, 0
         # Start with the root node
         node = self.root
-        # TODO
+        # create index_pointer starting variable
+        index_pointer = 0
+        # traverse the letters of the string (for as long as the nodes have children) 
+        while index_pointer < len(string) and node.has_child(string[index_pointer]) is True:
+          # increment the node pointer by setting it to the child of the index_pointer
+          node = node.get_child(string[index_pointer])
+          # increment the index_pointer
+          index_pointer += 1
+        # return the node and its location
+        return node, index_pointer
 
     def complete(self, prefix):
         """Return a list of all strings stored in this prefix tree that start
         with the given prefix string."""
         # Create a list of completions in prefix tree
         completions = []
-        # TODO
+        # if the prefix is an empty string
+        if prefix == ""
+          # return the strings function on the tree
+          return self.strings()
+        # create node variable and set it equal to that location 
+        node = self._find_node(prefix)
+        # if the character at location 0 is not empty
+        if node[0].character != "":
+          # traverse the tree from node 0 to the prefix, and append it to completions
+          self.traverse(node[0], prefix, completions.append()
+        # return the list of completions
+        return completions
 
     def strings(self):
         """Return a list of all strings stored in this prefix tree."""
