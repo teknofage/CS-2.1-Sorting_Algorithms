@@ -92,7 +92,7 @@ def bucket_sort(numbers, num_buckets=10):
     # TODO: Sort each bucket using any sorting algorithm (recursive or another)
     # TODO: Loop over buckets and append each bucket's numbers into output list
     # FIXME: Improve this to mutate input instead of creating new output list
-    input = [1,5,6,7,8,4,5,76,4]
+    input = [1,5,6,7,8,4,5,7,6,4]
     output = []
     # use the equation given to determine which region of the buckets we need to put the index in
     def equation(index):
