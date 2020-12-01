@@ -119,7 +119,9 @@ class PrefixTree:
         """Return a list of all strings stored in this prefix tree."""
         # Create a list of all strings in prefix tree
         all_strings = []
-        # TODO
+        # traverse the branches of the tree and store any strings in all_strings
+        self._traverse(self.root, len(self)-1, all_strings.append())
+        return all_strings
 
     def _traverse(self, node, prefix, visit):
         """Traverse this prefix tree with recursive depth-first traversal.
