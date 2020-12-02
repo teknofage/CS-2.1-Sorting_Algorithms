@@ -1,5 +1,5 @@
 #!python
-from sorting_iterative import selection_sort, insertion_sort, bubble_sort, is_sorted
+from sorting_iterative import insertion_sort
 
 def counting_sort(numbers):
     """Sort given numbers (integers) by counting occurrences of each number,
@@ -14,12 +14,7 @@ def counting_sort(numbers):
             Why and under what conditions?
                 Under the worst conditions, because it only creates one extra data structure
             """
-    # TODO: Find range of given numbers (minimum and maximum integer values)
-    # TODO: Create list of counts with a slot for each number in input range
-    # TODO: Loop over given numbers and increment each number's count
-    # TODO: Loop over counts and append that many numbers into output list
-    # FIXME: Improve this to mutate input instead of creating new output list 
-  
+     
     # Create output variable and set it to equal length of numbers array that will be sorted  
     output = [0 for i in range(len(numbers))] 
   
@@ -57,13 +52,27 @@ def counting_sort(numbers):
   
 # Input to test counting_sort function 
 # numbers = "canyourearrangeme"
-numbers = "76564231469234"
-ans = counting_sort(numbers) 
-print("Sorted character array is % s" %("".join(ans))) 
+# numbers = "76564231469234"
+# ans = counting_sort(numbers) 
+# print("Sorted character array is % s" %("".join(ans))) 
 
 
-# def bucket_sort(numbers, num_buckets=10):
-#     """Sort given numbers by distributing into buckets representing subranges,
+# input = [1,5,6,7,8,4,5,7,6,4]
+# output = []
+#     # use the equation given to determine which region of the buckets we need to put the index in
+# def equation(input, num_buckets, index):
+#     len(input) * input(index) / len(input) + 1
+#     # loop through input
+#     for i in range(len(input)):
+#     # if the result of the equation does not equal 0
+#         if len(output[equation(input, num_buckets, input[i])]) != 0:
+#         # append it to the output
+#             output[equation(input, num_buckets, input[i])].append(input[1])
+#         return print(output)
+
+
+def bucket_sort(numbers, num_buckets=10):
+    """Sort given numbers by distributing into buckets representing subranges,
 #     then sorting each bucket and concatenating all buckets in sorted order.
 #        Running time: 
 #                 Best: 0(n*k) 
@@ -87,48 +96,35 @@ print("Sorted character array is % s" %("".join(ans)))
 #                 form of the array of arrays, and in python
 #                 these are all dynamic arrays which have flexible space.
 #             """
-#     # TODO: Find range of given numbers (minimum and maximum values)
-#     # TODO: Create list of buckets to store numbers in subranges of input range
-#     # TODO: Loop over given numbers and place each item in appropriate bucket
-#     # TODO: Sort each bucket using any sorting algorithm (recursive or another)
-#     # TODO: Loop over buckets and append each bucket's numbers into output list
-#     # FIXME: Improve this to mutate input instead of creating new output list
-input = [1,5,6,7,8,4,5,7,6,4]
-output = []
-#     # use the equation given to determine which region of the buckets we need to put the index in
-def equation(input, num_buckets, index):
-    len(input) * input(index) / len(input) + 1
-    # loop through input
-    for i in range(len(input)):
-    # if the result of the equation does not equal 0
-        if len(output[equation(input, num_buckets, input[i])]) != 0:
-        # append it to the output
-            output[equation(input, num_buckets, input[i])].append(input[1])
-        return print(output)
-
-
-def bucket_sort(numbers, num_buckets=10):
-    array = []
+    buckets = []
 
     # Create empty buckets
     for i in range(num_buckets):
-        array.append([])
+        buckets.append([])
 
-    # Insert elements into their respective buckets
+    # isnert each elements from numbers into each bucket
     for num in numbers:
-        index = int(num/max(numbers)* (num_buckets -1))
-        bucket = array[index]
-        bucket[index].append(j)
+        if type(num) is int:
+            index = int(int(num/int(max(numbers)))* int((num_buckets - 1)))
+            bucket = buckets[index]
+            bucket.append(num)
+        else:
+            index = ((int(num)/int(max(numbers)))* ((num_buckets - 1)))
+            bucket = buckets[index]
+            bucket.append(num)
 
-    # Sort the elements of each bucket
-    for bucket in array:
+    # Then sort each element using insertion sort
+    for bucket in buckets:
         insertion_sort(bucket)
 
-    # Get the sorted elements
+    # get sorted elements
     k = 0
     for i in range(num_buckets):
-        for l in array[i]:
-            numbers[k] = l
+        for value in buckets[i]:
+            numbers[k] = value
             k += 1
-            
+
+    # return sorted numbers array
     return numbers
+
+
