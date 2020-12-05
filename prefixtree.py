@@ -15,12 +15,12 @@ class PrefixTree:
     tree's root node to a terminal node that marks the end of the string."""
 
     # Constant for the start character stored in the prefix tree's root node
-    ROOT_CHARACTER = ''
+    START_CHARACTER = ''
 
     def __init__(self, strings=None):
         """Initialize this prefix tree and insert the given strings, if any."""
         # Create a new root node with the start character
-        self.root = PrefixTreeNode(PrefixTree.ROOT_CHARACTER)
+        self.root = PrefixTreeNode(PrefixTree.START_CHARACTER)
         # Count the number of strings inserted into the tree
         self.size = 0
         # if there are any strings
