@@ -23,9 +23,11 @@ class PrefixTree:
         self.root = PrefixTreeNode(PrefixTree.ROOT_CHARACTER)
         # Count the number of strings inserted into the tree
         self.size = 0
-        # Insert each string, if any were given
+        # if there are any strings
         if strings is not None:
+            # For each string,
             for string in strings:
+                # insert each string into the tree
                 self.insert(string)
 
     def __repr__(self):
@@ -39,7 +41,7 @@ class PrefixTree:
     def contains(self, string):
         """Return True if this prefix tree contains the given string."""
         node = self.root
-        # traverse through the string of each character
+        # traverse through the characters of each string
         for char in string: 
             # if node has the character in its children
             if node.has_child(char): 
@@ -64,9 +66,9 @@ class PrefixTree:
                 # Node is there, move to the next node
                 node = node.get_child(char) 
             else:
-                # Create a new node
+                # Create a new node with the character
                 new_node = PrefixTreeNode(char)
-                # Append new node
+                # Append new node with the character
                 node.add_child(char, new_node) 
                 # point "head" to new new node and continue
                 node = new_node 
@@ -85,21 +87,21 @@ class PrefixTree:
             return self.root, 0
         # Start with the root node
         node = self.root
-        idx_pointer = 0 # Create starting pointer
+        index_pointer = 0 # Create starting pointer
         # Loop through each letter of string
         # while the runner is less than the length of the string and the if the node has the character
-        while idx_pointer < len(string) and node.has_child(string[idx_pointer]) is True:
-            # Traverse through each node, then point to the next value
-            node = node.get_child(string[idx_pointer])
-            idx_pointer += 1
+        while index_pointer < len(string) and node.has_child(string[index_pointer]) is True:
+            # Traverse through each node 
+            node = node.get_child(string[index_pointer])
+            # increment the index pointer to the next value
+            index_pointer += 1
         # return both node and location of the node
-        return node,idx_pointer
+        return node,index_pointer
 
     def complete(self, prefix):
         """Return a list of all strings stored in this prefix tree that start
         with the given prefix string."""
-        # Create a list of completions in prefix tree
-        # Create an empty array to hold all strings
+        # Create a list of completions in prefix tree, an empty array to hold all completed strings
         completions = []
         # If prefix is equal to nothing
         if prefix == '':
